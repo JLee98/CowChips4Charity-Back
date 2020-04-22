@@ -41,22 +41,22 @@ app.get('/.well-known/acme-challenge/:content', (req, res) => {
 app.use((req, res) => res.status(404).send({ url: req.originalUrl + ' not found' }));
 
 
-const appdonation = express();
-appdonation.use(cors());
-
-const donationServer = appdonation.listen(process.env.WEBSOCKET_PORT, function () {
-  console.log(`Socket server started on port ${process.env.WEBSOCKET_PORT}`);
-})
-const donationSocket = require('socket.io')(donationServer)
-donationSocket.on('connection', (socket) => {
-  console.log("Donation Socket Connected");
-})
-
-donationSocket.on('connection', (socket) => {
-  socket.on('donationOccur', (data) => {
-    socket.broadcast.emit("updateAvailable", data);
-  });
-});
+// const appdonation = express();
+// appdonation.use(cors());
+//
+// const donationServer = appdonation.listen(process.env.WEBSOCKET_PORT, function () {
+//   console.log(`Socket server started on port ${process.env.WEBSOCKET_PORT}`);
+// })
+// const donationSocket = require('socket.io')(donationServer)
+// donationSocket.on('connection', (socket) => {
+//   console.log("Donation Socket Connected");
+// })
+//
+// donationSocket.on('connection', (socket) => {
+//   socket.on('donationOccur', (data) => {
+//     socket.broadcast.emit("updateAvailable", data);
+//   });
+// });
 
 
 establishDBConnection()
