@@ -42,12 +42,12 @@ app.use((req, res) => res.status(404).send({ url: req.originalUrl + ' not found'
 
 
 const appdonation = express();
-appdonation.use(cors(configuration));
-
-const donationServer = appdonation.listen(process.env.WEBSOCKET_PORT, function () {
-  console.log(`Socket server started on port ${process.env.WEBSOCKET_PORT}`);
-})
-const donationSocket = require('socket.io')(donationServer)
+var server = require('http').createServer(appdonation);
+// const donationServer = appdonation.listen(process.env.WEBSOCKET_PORT, function () {
+//   console.log(`Socket server started on port ${process.env.WEBSOCKET_PORT}`);
+// })
+const donationSocket = require('socket.io')(server);
+server.listen(process.env.WEBSOCKET_PORT);
 donationSocket.on('connection', (socket) => {
   console.log("Donation Socket Connected");
 })
