@@ -54,6 +54,7 @@ donationSocket.on('connection', (socket) => {
 
 donationSocket.on('connection', (socket) => {
   socket.on('donationOccur', (data) => {
+    console.log("donation occured");
     socket.broadcast.emit("updateAvailable", data);
   });
 });
