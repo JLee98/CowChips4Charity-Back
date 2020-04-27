@@ -48,10 +48,6 @@ var server = require('http').createServer(appdonation);
 //   console.log(`Socket server started on port ${process.env.WEBSOCKET_PORT}`);
 // })
 const donationSocket = require('socket.io')(server);
-donationSocket.configure( () => {
-  donationSocket.set("transports", ["xhr-polling"]);
-  donationSocket.set("polling duration", 10);
-});
 donationSocket.on('connection', (socket) => {
   console.log("Donation Socket Connected");
 })
