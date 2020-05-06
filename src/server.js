@@ -48,7 +48,7 @@ var server = require('http').createServer(app);
 //   console.log(`Socket server started on port ${process.env.WEBSOCKET_PORT}`);
 // })
 const donationSocket = require('socket.io').listen(server);
-server.listen(process.env.PORT);
+// server.listen(process.env.WEBSOCKET_PORT);
 donationSocket.sockets.on('connection', (socket) => {
   console.log("Donation Socket Connected");
 })
