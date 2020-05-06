@@ -103,7 +103,7 @@ export default class DonationController
       })
       .then(() => {
         var donationData = {"gameId": req.body.gameID, "orgId": req.body.organizationID};
-        var socket = io.connect(window.location.hostname)
+        var socket = io.connect(`${process.env.APP_URL}`)
         socket.emit('donationOccur', donationData);
       })
       .then(() => res.json({ success: true }))
