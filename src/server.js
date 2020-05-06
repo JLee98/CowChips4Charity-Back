@@ -41,9 +41,9 @@ app.get('/.well-known/acme-challenge/:content', (req, res) => {
 app.use((req, res) => res.status(404).send({ url: req.originalUrl + ' not found' }));
 
 
-const appdonation = express();
-appdonation.use(cors(configuration));
-var server = require('http').createServer(appdonation);
+// const appdonation = express();
+// appdonation.use(cors(configuration));
+var server = require('http').createServer(app);
 // const donationServer = appdonation.listen(process.env.WEBSOCKET_PORT, function () {
 //   console.log(`Socket server started on port ${process.env.WEBSOCKET_PORT}`);
 // })
