@@ -48,11 +48,11 @@ var server = require('http').createServer(appdonation);
 // })
 const donationSocket = require('socket.io').listen(server);
 server.listen(process.env.WEBSOCKET_PORT);
-donationSocket.on('connection', (socket) => {
+donationSocket.sockets.on('connection', (socket) => {
   console.log("Donation Socket Connected");
 })
 
-donationSocket.on('connection', (socket) => {
+donationSocket.sockets.on('connection', (socket) => {
   socket.on('donationOccur', (data) => {
     console.log("donation occured");
     socket.broadcast.emit("updateAvailable", data);
